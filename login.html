@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng Nhập thành viên CLB Âm nhạc ĐH Đà Lạt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation (Header) -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center">
+            <a href="index.html" class="flex items-center">
+              <img src="images/logo.png" alt="Logo CLB" class="h-12 w-auto" />
+              <span class="ml-3 text-xl font-semibold text-gray-800"
+                >CLB Âm nhạc ĐH Đà Lạt</span
+              >
+            </a>
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="index.html#overview"
+              class="text-gray-600 hover:text-blue-600"
+              >Giới thiệu</a
+            >
+            <a
+              href="index.html#events"
+              class="text-gray-600 hover:text-blue-600"
+              >Sự kiện</a
+            >
+            <a
+              href="index.html#gallery"
+              class="text-gray-600 hover:text-blue-600"
+              >Thư viện</a
+            >
+            <a
+              href="index.html#members"
+              class="text-gray-600 hover:text-blue-600"
+              >Thành viên</a
+            >
+            <a
+              href="index.html#contact"
+              class="text-gray-600 hover:text-blue-600"
+              >Liên hệ</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+    <section
+      class="pt-36 pb-20 min-h-screen flex items-center justify-center bg-gray-50"
+    >
+      <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-8">
+        <h2 class="text-2xl font-bold mb-6 text-center text-blue-600">
+          Đăng nhập
+        </h2>
+        <form>
+          <div class="mb-4">
+            <label class="block mb-1 font-semibold">Mã số sinh viên/Email</label>
+            <input
+              type="text"
+              required
+              oninvalid="this.setCustomValidity('Vui lòng nhập mã số sinh viên hoặc email!')"
+              oninput="this.setCustomValidity('')"
+              class="w-full border rounded px-3 py-2"
+            />
+         
+          <div class="mb-4">
+            <label class="block mb-1 font-semibold">Mật Khẩu</label>
+            <input
+              type="password"
+              required
+              oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu!')"
+              oninput="this.setCustomValidity('')"
+              class="w-full border rounded px-3 py-2"
+            />
+          
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-blue-600 text-white py-2 rounded font-semibold hover:bg-blue-700 transition"
+          >
+            Gửi đăng ký
+          </button>
+        </form>
+        <div class="mt-6 text-center">
+          <a href="index.html" class="text-blue-600 hover:underline"
+            >Quay về trang chủ</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p>© 2025 Câu lạc bộ Âm nhạc Đại học Đà Lạt. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+document.querySelector('form').addEventListener('submit', function(e) {
+  let valid = true;
+  // Xóa thông báo cũ
+  this.querySelectorAll('.text-red-500').forEach(el => el.remove());
+
+  // Kiểm tra mã số sinh viên/email
+  const userField = this.querySelector('input[type="text"]');
+  if (!userField.value.trim()) {
+    valid = false;
+    const msg = document.createElement('div');
+    msg.className = 'text-red-500 text-sm mt-1';
+    msg.textContent = 'Vui lòng nhập mã số sinh viên hoặc email!';
+    userField.parentNode.appendChild(msg);
+  } else if (
+    userField.value.includes('@') &&
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userField.value)
+  ) {
+    valid = false;
+    const msg = document.createElement('div');
+    msg.className = 'text-red-500 text-sm mt-1';
+    msg.textContent = 'Email không hợp lệ!';
+    userField.parentNode.appendChild(msg);
+  }
+
+  // Kiểm tra mật khẩu
+  const passField = this.querySelector('input[type="password"], input[type="text"]:nth-of-type(2)');
+  if (!passField.value.trim()) {
+    valid = false;
+    const msg = document.createElement('div');
+    msg.className = 'text-red-500 text-sm mt-1';
+    msg.textContent = 'Vui lòng nhập mật khẩu!';
+    passField.parentNode.appendChild(msg);
+  }
+
+  if (!valid) e.preventDefault();
+});
+</script>
+  </body>
+</html>

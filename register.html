@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng ký thành viên CLB Âm nhạc ĐH Đà Lạt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation (Header) -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center">
+            <a href="index.html" class="flex items-center">
+              <img src="images/logo.png" alt="Logo CLB" class="h-12 w-auto" />
+              <span class="ml-3 text-xl font-semibold text-gray-800"
+                >CLB Âm nhạc ĐH Đà Lạt</span
+              >
+            </a>
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a href="index.html#overview" class="text-gray-600 hover:text-blue-600"
+              >Giới thiệu</a
+            >
+            <a href="index.html#events" class="text-gray-600 hover:text-blue-600"
+              >Sự kiện</a
+            >
+            <a href="index.html#gallery" class="text-gray-600 hover:text-blue-600"
+              >Thư viện</a
+            >
+            <a href="index.html#members" class="text-gray-600 hover:text-blue-600"
+              >Thành viên</a
+            >
+            <a href="index.html#contact" class="text-gray-600 hover:text-blue-600"
+              >Liên hệ</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    
+
+    <!-- Register Form Section -->
+    <section class="pt-36 pb-20 min-h-screen flex items-center justify-center bg-gray-50">
+      <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-8">
+        <h2 class="text-2xl font-bold mb-6 text-center text-blue-600">Đăng ký thành viên</h2>
+        <form>
+          <div class="mb-4">
+            <label class="block mb-1 font-semibold">Họ tên</label>
+            <input 
+              type="text" 
+              required 
+              oninvalid="this.setCustomValidity('Vui lòng nhập họ tên!')" 
+              oninput="this.setCustomValidity('')" 
+              class="w-full border rounded px-3 py-2" 
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block mb-1 font-semibold">Mã số sinh viên</label>
+            <input 
+              type="text" 
+              required 
+              oninvalid="this.setCustomValidity('Vui lòng nhập mã số sinh viên!')" 
+              oninput="this.setCustomValidity('')" 
+              class="w-full border rounded px-3 py-2" 
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block mb-1 font-semibold">Email</label>
+            <input 
+              type="email" 
+              required 
+              oninvalid="this.setCustomValidity('Vui lòng nhập email!')" 
+              oninput="this.setCustomValidity('')" 
+              class="w-full border rounded px-3 py-2" 
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block mb-1 font-semibold">Số điện thoại</label>
+            <input 
+              type="tel" 
+              required 
+              oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại!')" 
+              oninput="this.setCustomValidity('')" 
+              class="w-full border rounded px-3 py-2" 
+            />
+          </div>
+          <div class="mb-6">
+            <label class="block mb-1 font-semibold">Ngành học</label>
+            <input 
+              type="text" 
+              required 
+              oninvalid="this.setCustomValidity('Vui lòng nhập ngành học!')" 
+              oninput="this.setCustomValidity('')" 
+              class="w-full border rounded px-3 py-2" 
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block mb-1 font-semibold">Mật Khẩu</label>
+            <input
+              type="text"
+              class="w-full border rounded px-3 py-2"
+              required
+            />
+          <div class="mb-4 text-center">
+            <span class="text-gray-600">Đã có tài khoản?</span>
+            <a href="login.html" class="text-blue-600 hover:underline font-semibold">Đăng nhập tại đây</a>
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-blue-600 text-white py-2 rounded font-semibold hover:bg-blue-700 transition"
+          >
+            Gửi đăng ký
+          </button>
+        </form>
+        <div class="mt-6 text-center">
+          <a href="index.html" class="text-blue-600 hover:underline">Quay về trang chủ</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p>© 2025 Câu lạc bộ Âm nhạc Đại học Đà Lạt. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+document.querySelector('form').addEventListener('submit', function(e) {
+  let valid = true;
+  const fields = this.querySelectorAll('input');
+  fields.forEach(field => {
+    // Xóa thông báo cũ
+    let err = field.parentNode.querySelector('.text-red-500');
+    if (err) err.remove();
+
+    if (!field.value.trim()) {
+      valid = false;
+      const msg = document.createElement('div');
+      msg.className = 'text-red-500 text-sm mt-1';
+      msg.textContent = 'Vui lòng nhập thông tin này!';
+      field.parentNode.appendChild(msg);
+    }
+  });
+  if (!valid) e.preventDefault();
+});
+</script>
+  </body>
+</html>
